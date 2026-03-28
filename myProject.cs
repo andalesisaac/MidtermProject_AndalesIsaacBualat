@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-
+using System;
 class Program
 {
     static void Main()
@@ -70,9 +68,25 @@ class Program
         Console.Write("Year: ");
         string year = Console.ReadLine();
 
-        string student = $"{lname},{fname},{mi},{birth},{age},{address},{contact},{course},{year}";
+        // string student = $"{lname},{fname},{mi},{birth},{age},{address},{contact},{course},{year}";
+       
+        string student = "{\n" +
+                 "  \"Student\": [\n" +
+                 "    {\n" +
+                 $"      \"lname\": \"{lname}\",\n" +
+                 $"      \"fname\": \"{fname}\",\n" +
+                 $"      \"mi\": \"{mi}\",\n" +
+                 $"      \"birthdate\": \"{birth}\",\n" +
+                 $"      \"age\": {age},\n" +
+                 $"      \"address\": \"{address}\",\n" +
+                 $"      \"number\": \"{contact}\",\n" +
+                 $"      \"subject\": \"{course}\",\n" +
+                 $"      \"year\": {year}\n" +
+                 "    }\n" +
+                 "  ]\n" +
+                 "}";
 
-        File.AppendAllText("students.txt", student + Environment.NewLine);
+        File.AppendAllText("data.txt", student + Environment.NewLine);
 
         Console.WriteLine("Student Registered Successfully!");
     }
@@ -94,9 +108,19 @@ class Program
         Console.Write("Subject ID: ");
         string subID = Console.ReadLine();
 
-        string subject = $"{lname},{subName},{subID}";
+        // string subject = $"{lname},{subName},{subID}";
+       
+        string subject = "{\n" +
+         "  \"Subjects\": [\n" +
+         "    {\n" +
+         $"      \"lname\": \"{lname}\",\n" +
+         $"      \"subject\": \"{subName}\",\n" +
+         $"      \"subjectName\": \"{subID}\"\n" +
+         "    }\n" +
+         "  ]\n" +
+         "}";
 
-        File.AppendAllText("subjects.txt", subject + Environment.NewLine);
+        File.AppendAllText("data.txt", subject + Environment.NewLine);
 
         Console.WriteLine("Subject Enrolled!");
     }
@@ -112,9 +136,18 @@ class Program
         Console.Write("Grade: ");
         string grade = Console.ReadLine();
 
-        string record = $"{lname},{subject},{grade}";
+        // string record = $"{lname},{subject},{grade}";
+        string record = "{\n" +
+         "  \"Grades\": [\n" +
+         "    {\n" +
+         $"      \"lname\": \"{lname}\",\n" +
+         $"      \"subject\": \"{subject}\",\n" +
+         $"      \"grade\": \"{grade}\"\n" +
+         "    }\n" +
+         "  ]\n" +
+         "}";
 
-        File.AppendAllText("grades.txt", record + Environment.NewLine);
+        File.AppendAllText("data.txt", record + Environment.NewLine);
 
         Console.WriteLine("Grade Saved!");
     }
